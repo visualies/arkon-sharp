@@ -25,3 +25,8 @@ namespace Example
 Implements [RconSharp](https://github.com/stefanodriussi/rconsharp)
 
 Most methods require [Extended Rcon](https://arkserverapi.com/index.php?resources/extended-rcon.5/)
+
+Nuget Package
+```
+Install-Package ArkonSharp -Version 0.0.1
+```
