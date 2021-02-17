@@ -1,6 +1,7 @@
 # ArkonSharp
 
 Rcon Library to work with Ark Survival Evolved commands.
+Available as NuGet Package
 
 
 ```csharp
