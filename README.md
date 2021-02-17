@@ -1,4 +1,4 @@
-# ArkonSharp
+# ArkonSharp v0.0.1
 
 Rcon Library to work with Ark Survival Evolved commands.
 
