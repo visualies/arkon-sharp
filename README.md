@@ -22,3 +22,4 @@ namespace Example
     }
 }
 ```
+Implements [RconSharp](https://github.com/stefanodriussi/rconsharp)
