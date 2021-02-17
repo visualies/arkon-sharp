@@ -1,6 +1,7 @@
-# Rcon Library to work with Ark Survival Evolved commands
+# ArkonSharp
 
-#Implements RconSharp
+Rcon Library to work with Ark Survival Evolved commands.
+
 
 ```csharp
 using System;
