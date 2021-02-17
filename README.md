@@ -1,7 +1,8 @@
 # Rcon Library to work with Ark Survival Evolved commands
 
 #Implements RconSharp
-```
+
+```csharp
 using System;
 
 namespace Example
