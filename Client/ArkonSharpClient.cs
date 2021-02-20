@@ -1,7 +1,9 @@
-﻿using ArkonSharp.Exceptions;
+﻿using ArkonSharp.Entities;
+using ArkonSharp.Exceptions;
 using RconSharp;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,6 +12,7 @@ namespace ArkonSharp
     public class ArkonSharpClient
     {
         public List<RconConnection> Connections { get; private set; }
+
 
         /// <summary>
         /// Registers a new Ark-Server connection to be used by the Client
@@ -21,6 +24,7 @@ namespace ArkonSharp
         /// <param name="timeout"></param>
         public void AddConnection(string name, string address, int port, string password, int timeout)
         {
+
             var connection = new RconConnection
             {
                 Name = name,
@@ -96,33 +100,65 @@ namespace ArkonSharp
         /// </summary>
         /// <param name="connection"></param>
         /// <returns></returns>
-        public async Task<List<long>> GetOnlinePlayers()
+        public async Task<List<Player>> GetPlayerList()
         {
-            List<long> onlinePlayers = new List<long>();
+            var playerlist = new List<Player>();
 
             foreach (RconConnection connection in Connections)
             {
-                try
+                var response = await ExecuteCommandAsync(connection, "ListAllPlayerSteamID");
+                var lines = response.Split('\n');
+
+                foreach (string line in lines)
                 {
-                    var result = await ExecuteCommandAsync(connection, "ListAllPlayerSteamID");
-                }
-                catch (RconExecutionException)
-                {
-                    throw;
+                    if (line.Length < 3) continue;
+
+                    var steamId = line.Reverse().TakeWhile(a => char.IsDigit(a)).Reverse();
+                    var tribename = line.Reverse().SkipWhile(a => a != ']').TakeWhile(a => a != '[').Skip(1).Reverse();
+                    var playername = line.Reverse().SkipWhile(a => a != '[').Skip(2).Reverse();
+
+                    playerlist.Add(new Player(string.Concat(playername), Convert.ToInt64(steamId), string.Concat(tribename)));
                 }
             }
 
-            return onlinePlayers;
+            //review: distinct this list ?
+            return playerlist;
         }
 
-        public async Task ParsePlayerList(string playerlist)
+        public async Task<Player> GetPlayer(long steamId)
         {
-            var lines = playerlist.Split('\n');
-
-            foreach (string line in lines)
+            foreach (RconConnection connection in Connections)
             {
+                var response = await ExecuteCommandAsync(connection, "ListAllPlayerSteamID");
+                var lines = response.Split('\n');
 
+                foreach (string line in lines)
+                {
+                    var searchSteamId = line.Reverse().TakeWhile(a => char.IsDigit(a)).Reverse();
+                    var tribename = line.Reverse().SkipWhile(a => a != ']').TakeWhile(a => a != '[').Skip(1).Reverse();
+                    var playername = line.Reverse().SkipWhile(a => a != '[').Skip(2).Reverse();
+
+                    if (Convert.ToInt64(searchSteamId) == steamId)
+                    {
+                        return new Player(string.Concat(playername), steamId, string.Concat(tribename));
+                    }
+                }
             }
+
+            throw new RconPlayerNotFoundException("Player could not be found on cluster");
         }
+
+
+
+        //public async Task GetTribeLog(string playerlist)
+        //{
+        //    var lines = playerlist.Split('\n');
+
+
+        //    foreach (string line in lines)
+        //    {
+
+        //    }
+        //}
     }
 }

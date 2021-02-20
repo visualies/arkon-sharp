@@ -6,6 +6,8 @@
     <Description>Rcon Library to work with Ark Survival Evolved commands</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Version>0.0.1</Version>
+    <RepositoryUrl>https://github.com/visualies/ArkonSharp</RepositoryUrl>
+    <RepositoryType></RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
