@@ -117,7 +117,12 @@ namespace ArkonSharp
                     var tribename = line.Reverse().SkipWhile(a => a != ']').TakeWhile(a => a != '[').Skip(1).Reverse();
                     var playername = line.Reverse().SkipWhile(a => a != '[').Skip(2).Reverse();
 
-                    playerlist.Add(new Player(string.Concat(playername), Convert.ToInt64(steamId), string.Concat(tribename)));
+                    var player = new Player(string.Concat(playername), Convert.ToInt64(steamId), string.Concat(tribename))
+                    {
+                        Client = this
+                    };
+
+                    playerlist.Add(player);
                 }
             }
 
@@ -140,7 +145,12 @@ namespace ArkonSharp
 
                     if (Convert.ToInt64(searchSteamId) == steamId)
                     {
-                        return new Player(string.Concat(playername), steamId, string.Concat(tribename));
+                        var player = new Player(string.Concat(playername), Convert.ToInt64(steamId), string.Concat(tribename))
+                        {
+                            Client = this
+                        };
+
+                        return player;
                     }
                 }
             }

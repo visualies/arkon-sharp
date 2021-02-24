@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ArkonSharp.Entities
 {
-    public class Player : ArkonSharpClient
+    public class Player : Entity
     {
         public Player(string name, long steamid, string tribename)
         {
@@ -21,17 +21,17 @@ namespace ArkonSharp.Entities
 
         public async Task Kick()
         {
-            foreach (RconConnection connection in Connections)
+            foreach (RconConnection connection in Client.Connections)
             {
-                await ExecuteCommandAsync(connection, $"KickPlayer {SteamId}");
+                await Client.ExecuteCommandAsync(connection, $"KickPlayer {SteamId}");
             }
         }
 
         public async Task Ban(string reason = null)
         {
-            foreach (RconConnection connection in Connections)
+            foreach (RconConnection connection in Client.Connections)
             {
-                await ExecuteCommandAsync(connection, $"BanPlayer {SteamId} {reason}");
+                await Client.ExecuteCommandAsync(connection, $"BanPlayer {SteamId} {reason}");
             }
         }
     }
