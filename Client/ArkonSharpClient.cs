@@ -57,15 +57,7 @@ namespace ArkonSharp
         /// <param name="timeout"></param>
         public void AddConnection(string mapName, string address, int port, string password, int timeout)
         {
-
-            var connection = new RconConnection
-            {
-                Name = mapName,
-                Address = address,
-                RconPort = port,
-                Password = password,
-                Timeout = timeout
-            };
+            var connection = new RconConnection(mapName, address, port, password, timeout);
 
             Connections.Add(connection);
         }
@@ -92,11 +84,6 @@ namespace ArkonSharp
             Timer.Enabled = true;
 
             await Task.CompletedTask;
-        }
-
-        public async Task TestMethod()
-        {
-            Console.WriteLine("works");
         }
 
         private async Task OnTimerEvent(object source, ElapsedEventArgs e, RconConnection connection)
