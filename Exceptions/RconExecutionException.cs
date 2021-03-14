@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ArkonSharp.Exceptions
 {
-    class RconExecutionException : Exception
+    public class RconExecutionException : Exception
     {
         public RconExecutionException(string message): base(message)
         {

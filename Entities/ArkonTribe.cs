@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ArkonSharp.Models
+namespace ArkonSharp.Entities
 {
-    class Tribe
+    public class ArkonTribe
     {
+        
     }
 }
