@@ -8,7 +8,6 @@ namespace ArkonSharp
         public readonly string Name;
         public readonly string Address;
         public readonly int Port;
-        public readonly int RconPort;
         public readonly string Password;
         public readonly int Timeout;
 
@@ -22,7 +21,7 @@ namespace ArkonSharp
 
             ArkonPlayers = new List<ArkonPlayer>();
         }
-        public List<ArkonPlayer> ArkonPlayers { get; private set; }
+        public List<ArkonPlayer> ArkonPlayers { get; set; }
     }
 
 }

@@ -88,12 +88,19 @@ namespace ArkonSharp
 
         private async Task OnTimerEvent(object source, ElapsedEventArgs e, RconConnection connection)
         {
+            List<ArkonPlayer> players = await GetPlayerListAsync(connection);
+
             List<ArkonPlayer> joinedPlayers = new List<ArkonPlayer>();
             List<ArkonPlayer> leftPlayers = new List<ArkonPlayer>();
-            var players = await GetPlayerListAsync(connection);
 
-            joinedPlayers = players.Except(connection.ArkonPlayers).ToList();
-            leftPlayers = connection.ArkonPlayers.Except(players).ToList();
+            Console.WriteLine(players.Count);
+            Console.WriteLine(connection.ArkonPlayers.Count);
+            joinedPlayers = players.Except(connection.ArkonPlayers, new ArkonPlayerComparer()).ToList();
+            leftPlayers = connection.ArkonPlayers.Except(players, new ArkonPlayerComparer()).ToList();
+            //todo NullException
+
+            Console.WriteLine($"Player joined list length: {joinedPlayers.Count}");
+            Console.WriteLine($"Player left list length: {leftPlayers.Count}");
 
             foreach (ArkonPlayer joined in joinedPlayers)
             {
@@ -105,8 +112,10 @@ namespace ArkonSharp
                 OnPlayerLeft(left, connection.Name);
             }
 
-            Console.WriteLine("timer");
+            connection.ArkonPlayers = players;
         }
+
+
 
         /// <summary>
         /// Executes a command over the specified rcon connection
@@ -118,16 +127,18 @@ namespace ArkonSharp
         {
             try
             {
-                var client = await ConnectRcon(connection.Address, connection.RconPort, connection.Password, connection.Timeout);
+                var client = await ConnectRcon(connection.Address, connection.Port, connection.Password, connection.Timeout);
                 var response = await client.ExecuteCommandAsync(command);
                 return response;
             }
-            catch (RconTimeoutException)
+            catch (RconTimeoutException e)
             {
+                Console.WriteLine(e.Message);
                 throw new RconExecutionException($"Failed to execute command on {connection.Name}");
             }
-            catch (RconAuthenticationException)
+            catch (RconAuthenticationException e)
             {
+                Console.WriteLine(e.Message);
                 throw new RconExecutionException($"Failed to execute command on {connection.Name}");
             }
         }
@@ -143,6 +154,7 @@ namespace ArkonSharp
 
             var response = await ExecuteCommandAsync(connection, "ListAllPlayerSteamID");
             if (response == "No Players Online\n") return playerlist;
+            if (response == "Command returned no data\n") throw new ExtendedRconNotInstalledException("This method requires the Extended Rcon Plugin to be installed");
             var lines = response.Split('\n');
 
             foreach (string line in lines)
@@ -195,19 +207,9 @@ namespace ArkonSharp
         private async Task<RconClient> ConnectRcon(string ip, int rconPort, string adminPassword, int timeout)
         {
             var client = RconClient.Create(ip, rconPort);
+            await client.ConnectAsync();
 
-            bool authenticated;
-            try
-            {
-                await client.ConnectAsync();
-
-                authenticated = await client.AuthenticateAsync(adminPassword);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                throw new RconTimeoutException("Connection timed out");
-            }
+            bool authenticated = await client.AuthenticateAsync(adminPassword);
 
             if (authenticated)
             {
