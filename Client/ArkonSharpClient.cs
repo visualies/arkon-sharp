@@ -93,14 +93,9 @@ namespace ArkonSharp
             List<ArkonPlayer> joinedPlayers = new List<ArkonPlayer>();
             List<ArkonPlayer> leftPlayers = new List<ArkonPlayer>();
 
-            Console.WriteLine(players.Count);
-            Console.WriteLine(connection.ArkonPlayers.Count);
             joinedPlayers = players.Except(connection.ArkonPlayers, new ArkonPlayerComparer()).ToList();
             leftPlayers = connection.ArkonPlayers.Except(players, new ArkonPlayerComparer()).ToList();
             //todo NullException
-
-            Console.WriteLine($"Player joined list length: {joinedPlayers.Count}");
-            Console.WriteLine($"Player left list length: {leftPlayers.Count}");
 
             foreach (ArkonPlayer joined in joinedPlayers)
             {
