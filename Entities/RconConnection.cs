@@ -10,6 +10,8 @@ namespace ArkonSharp
         public readonly int Port;
         public readonly string Password;
         public readonly int Timeout;
+        public List<ArkonPlayer> ArkonPlayers { get; set; }
+        public List<ArkonPlayerPosition> ArkonPlayerPositions { get; set; }
 
         public RconConnection(string name, string address, int port, string password, int timeout)
         {
@@ -20,8 +22,8 @@ namespace ArkonSharp
             Timeout = timeout;
 
             ArkonPlayers = new List<ArkonPlayer>();
+            ArkonPlayerPositions = new List<ArkonPlayerPosition>();
         }
-        public List<ArkonPlayer> ArkonPlayers { get; set; }
     }
 
 }

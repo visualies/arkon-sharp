@@ -4,7 +4,9 @@ using ArkonSharp.Exceptions;
 using RconSharp;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Timers;
 
@@ -160,17 +162,86 @@ namespace ArkonSharp
 
             foreach (RconConnection connection in Connections)
             {
-                playerlist.Concat(connection.ArkonPlayers);
+                playerlist = playerlist.Concat(connection.ArkonPlayers).ToList();
             }
 
             return playerlist;
         }
+        public async Task<List<ArkonPlayerPosition>> GetOnlinePlayerPositions()
+        {
+            List<ArkonPlayerPosition> positionList = new List<ArkonPlayerPosition>();
+
+            foreach (RconConnection connection in Connections)
+            {
+                var pos = await GetPlayerPosListAsync(connection);
+                positionList = positionList.Concat(pos).ToList();
+            }
+
+            return positionList;
+        }
+        internal async Task<List<ArkonPlayerPosition>> GetPlayerPosListAsync(RconConnection connection)
+        {
+            var positionList = new List<ArkonPlayerPosition>();
+
+            var response = await ExecuteCommandAsync(connection, "ListAllPlayerPos");
+            if (response == "\n") return positionList;
+            if (response == "Command returned no data\n") throw new ExtendedRconNotInstalledException("This method requires the Extended Rcon Plugin to be installed");
+
+            var lines = response.Split('\n');
+            foreach (string line in lines)
+            {
+                if (line.Length < 3) continue;
+
+                var bracket = ")";
+                int bracketCount = (line.Length - line.Replace(bracket, "").Length) / bracket.Length;
+
+                //hpyhen comparison needs an estra string since coords can contain hyphen
+                var hypenString = string.Concat(line.Reverse().SkipWhile(a => a != 'X').Reverse());
+                var hyphen = "-";
+                int hyphenCount = (line.Length - line.Replace(hyphen, "").Length) / hyphen.Length;
+
+                string playername;
+                string tribename;
+
+                if (line.Count(f => f == '(') == 1)
+                {
+                    playername = string.Concat(line.Reverse().SkipWhile(a => a != '(').Skip(3).Reverse());
+                    tribename = string.Concat(line.Reverse().SkipWhile(a => a != ')').Skip(1).TakeWhile(a => a != '(').Reverse());
+                }
+                else if (hypenString.Count(f => f == '-') == 1)
+                {
+                    playername = string.Concat(hypenString.Reverse().SkipWhile(a => a != '-').Skip(1).Reverse());
+                    tribename = string.Concat(hypenString.Reverse().SkipWhile(a=> a != ')').Skip(1).TakeWhile(a => a != '-').Reverse().Skip(2));
+                }
+                else
+                {
+                    //continue if tribe name and name are impossible to separate 
+                    continue;
+                }
+
+                //continue if player is "" (player is dead)
+                if (string.IsNullOrWhiteSpace(playername)) continue;
+
+                var z = double.Parse(string.Concat(line.Reverse().TakeWhile(a => a != '=').Reverse()), CultureInfo.InvariantCulture);
+                var y = double.Parse(string.Concat(line.Reverse().SkipWhile(a => a != 'Z').Skip(1).TakeWhile(a => a != '=').Reverse()), CultureInfo.InvariantCulture);
+                var x = double.Parse(string.Concat(line.Reverse().SkipWhile(a => a != 'Y').Skip(1).TakeWhile(a => a != '=').Reverse()), CultureInfo.InvariantCulture);
+
+                var position = new ArkonPlayerPosition(playername, tribename, connection.Name, x, y, z)
+                {
+                    Client = this
+                };
+
+                positionList.Add(position);
+            }
+
+            return positionList;
+        }
         internal async Task<List<ArkonPlayer>> GetPlayerListAsync(RconConnection connection)
         {
-            var playerlist = new List<ArkonPlayer>();
+            var playerList = new List<ArkonPlayer>();
 
             var response = await ExecuteCommandAsync(connection, "ListAllPlayerSteamID");
-            if (response == "No Players Online\n") return playerlist;
+            if (response == "No Players Online\n") return playerList;
             if (response == "Command returned no data\n") throw new ExtendedRconNotInstalledException("This method requires the Extended Rcon Plugin to be installed");
             var lines = response.Split('\n');
 
@@ -188,10 +259,10 @@ namespace ArkonSharp
                     Client = this
                 };
 
-                playerlist.Add(player);
+                playerList.Add(player);
             }
 
-            return playerlist;
+            return playerList;
         }
         internal async Task KickAsync(ArkonPlayer player)
         {
@@ -245,6 +316,11 @@ namespace ArkonSharp
             }
 
             connection.ArkonPlayers = players;
+        }
+
+        private async Task UpdateOnlinePlayersAsync()
+        {
+
         }
 
         //public async Task GetTribeLog(string playerlist)
