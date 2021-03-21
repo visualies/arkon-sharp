@@ -17,7 +17,10 @@ namespace Example
             rcon.AddConnection("name", "12.34.567.89", 32330, "adminpass", 3)
             rcon.AddConnection("name", "12.34.567.89", 32332, "adminpass", 3)
             
+            rcon.ConnectAsync();
+            
             var players = rcon.GetOnlinePlayers();
+            
         }
     }
 }
