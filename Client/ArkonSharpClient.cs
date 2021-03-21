@@ -21,13 +21,20 @@ namespace ArkonSharp
         /// Initialized a new instance of ArkonSharpClient.
         /// </summary>
         /// <param name="config">The Arkon client configuration.</param>
-        /// <exception cref="ArkonConfigurationException"></exception>
         public ArkonSharpClient(ArkonSharpConfiguration config)
         {
-            if (config.Connections.Count == 0)
+            ArkonSharpConfiguration = config;
+            Connections = config.Connections;
+            Timer = new Timer();
+        }
+
+        public ArkonSharpClient()
+        {
+            var config = new ArkonSharpConfiguration
             {
-                throw new ArkonConfigurationException("Configuration requires at least one connection to be specified");
-            }
+                Connections = new List<ArkonConnection>(),
+                UpdateInterval = 30000
+            };
 
             ArkonSharpConfiguration = config;
             Connections = config.Connections;
