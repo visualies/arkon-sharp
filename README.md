@@ -31,5 +31,5 @@ Most methods require [Extended Rcon](https://arkserverapi.com/index.php?resource
 
 #### Nuget Package .NET CLI
 ```cli
-dotnet add package ArkonSharp --version 0.0.1
+dotnet add package ArkonSharp --version 1.2.0
 ```
