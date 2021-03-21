@@ -4,11 +4,11 @@ using System.Text;
 
 namespace ArkonSharp.Exceptions
 {
-    class RconPlayerNotFoundException : Exception
+    public class ArkonConfigurationException : Exception
     {
-        public RconPlayerNotFoundException(string message): base(message)
+        public ArkonConfigurationException(string message) : base(message)
         {
-            
+
         }
     }
 }

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ArkonSharp.Exceptions
 {
-    class RconAuthenticationException : Exception
+    public class ArkonExecutionException : Exception
     {
-        public RconAuthenticationException(string message): base(message)
+        public ArkonExecutionException(string message): base(message)
         {
             
         }

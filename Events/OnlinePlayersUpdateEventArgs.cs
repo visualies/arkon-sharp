@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace ArkonSharp
 {
-    public class OnlinePlayersUpdateEventArgs
+    public class ArkonCacheUpdatedEventArgs
     {
-        public List<ArkonPlayer> OnlinePlayers { get; set; }
+        public IReadOnlyCollection<ArkonPlayer> OnlinePlayers { get; set; }
         public DateTime Timestamp { get; set; }
     }
 }

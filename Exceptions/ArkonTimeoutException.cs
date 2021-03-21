@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ArkonSharp.Exceptions
 {
-    public class RconTimeoutException : Exception
+    public class ArkonTimeoutException : Exception
     {
-        public RconTimeoutException(string message): base(message)
+        public ArkonTimeoutException(string message): base(message)
         {
 
         }
