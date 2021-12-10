@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Net.Sockets;
-using System.Numerics;
-using System.Security.Authentication;
-using System.Threading.Tasks;
-using ArkonSharp.Entities;
-using ArkonSharp.Enums;
-using RconSharp;
-
-namespace ArkonSharp.Clients
+﻿namespace ArkonSharp.Clients
 {
     public class ArkonSharpClient
     {

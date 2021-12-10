@@ -16,15 +16,15 @@ namespace ArkonSharp.Clients
             
         }
         
-        public async Task<string> AddExperienceAsync(ExtendedRconPlayer player, int amount, bool tribeShare, bool preventSharingWithTribe)
+        public async Task<string> AddExperienceAsync(long steamId, int amount, bool tribeShare, bool preventSharingWithTribe)
         {
-            var command = $"AddExperience {player.SteamId} {amount} {Convert.ToInt32(tribeShare)} {Convert.ToInt32(preventSharingWithTribe)}";
+            var command = $"AddExperience {steamId} {amount} {Convert.ToInt32(tribeShare)} {Convert.ToInt32(preventSharingWithTribe)}";
             return await ExecuteCommandAsync(command);
         }
 
-        public async Task<string> UnlockEngramAsync(ExtendedRconPlayer player, string blueprintPath)
+        public async Task<string> UnlockEngramAsync(long steamId, string blueprintPath)
         {
-            var command = $"UnlockEngram {player.SteamId} {blueprintPath}";
+            var command = $"UnlockEngram {steamId} {blueprintPath}";
             return await ExecuteCommandAsync(command);
         }
 
@@ -33,9 +33,9 @@ namespace ArkonSharp.Clients
             var command = $"ClientChat '{message}' {author}";
             return await ExecuteCommandAsync(command);
         }
-        public async Task<string> GiveItemAsync(ExtendedRconPlayer player, string blueprintPath, int amount, int quality, bool foreBlueprint = false)
+        public async Task<string> GiveItemAsync(long steamId, string blueprintPath, int amount, int quality, bool foreBlueprint = false)
         {
-            var command = $"GiveItem {player.SteamId} {blueprintPath} {amount} {quality} {Convert.ToInt32(foreBlueprint)}";
+            var command = $"GiveItem {steamId} {blueprintPath} {amount} {quality} {Convert.ToInt32(foreBlueprint)}";
             return await ExecuteCommandAsync(command);
         }
         
@@ -57,9 +57,9 @@ namespace ArkonSharp.Clients
             return await ExecuteCommandAsync(command);
         }
         
-        public async Task<long> GetTribeIdOfPlayerAsync(ExtendedRconPlayer player)
+        public async Task<long> GetTribeIdOfPlayerAsync(long steamId)
         {
-            var command = $"GetTribeIdOfPlayer {player.SteamId}";
+            var command = $"GetTribeIdOfPlayer {steamId}";
             var response = await ExecuteCommandAsync(command);
 
             if (response.Contains("Not enough arguments"))
