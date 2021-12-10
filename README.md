@@ -16,10 +16,10 @@ namespace Example
             
             //Examples
             
-            //ArkShop Example: <steamId> <points>
+            //ArkShop give points to player <steamId> <points>
             await rcon.ArkShop.AddPointsAsync(76561198223679884, 500)
             
-            //WLootbox Example: <steamId> <boxKeyword> <amount>
+            //WLootbox give lootbox to player <steamId> <boxKeyword> <amount>
             await rcon.WoolyLootbox.AddLootboxAsync(76561198223679884, "Gold", 5);
             
             //Get a playerlist to easily iterate through online players
