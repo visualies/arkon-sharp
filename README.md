@@ -32,9 +32,9 @@ namespace Example
 Implements [RconSharp](https://github.com/stefanodriussi/rconsharp)
 
 Supported Plugins:
-[AdvancedDinoColor](https://arkserverapi.com/index.php?resources/advanced-dino-color.152/)
-[ArkShop](https://arkserverapi.com/index.php?resources/shop-currency-kits.14/)
-[ExtendedRcon](https://arkserverapi.com/index.php?resources/extended-rcon.5/)
+[AdvancedDinoColor](https://arkserverapi.com/index.php?resources/advanced-dino-color.152/) \n
+[ArkShop](https://arkserverapi.com/index.php?resources/shop-currency-kits.14/)\n
+[ExtendedRcon](https://arkserverapi.com/index.php?resources/extended-rcon.5/)\n
 [WoolyLootbox]()
 
 #### Nuget Package .NET CLI
