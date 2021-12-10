@@ -8,7 +8,10 @@
     <Product />
     <Copyright></Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>2.0.0</Version>
+    <Version>3.0.0</Version>
+    <PackageProjectUrl>https://github.com/visualies/ArkonSharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/visualies/ArkonSharp</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
