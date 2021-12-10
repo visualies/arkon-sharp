@@ -14,11 +14,16 @@ namespace Example
             //Create a new ArkonSharpClient with <address> <rconPort> and <rconPassword>
             var rcon = new ArkonSharpClient("12.34.567.89", 32330, "adminpass");
             
+            //Examples
+            
             //ArkShop Example: <steamId> <points>
-            rcon.ArkShop.AddPointsAsync(76561198223679884, 500)
+            await rcon.ArkShop.AddPointsAsync(76561198223679884, 500)
             
             //WLootbox Example: <steamId> <boxKeyword> <amount>
-            rcon.WoolyLootbox.AddLootboxAsync(76561198223679884, "Gold", 5);
+            await rcon.WoolyLootbox.AddLootboxAsync(76561198223679884, "Gold", 5);
+            
+            //Get a playerlist to easily iterate through online players
+            List<ExtendedRconPlayer> players = await rcon.ExtendedRcon.GetOnlinePlayersAsync();
         }
     }
 }
