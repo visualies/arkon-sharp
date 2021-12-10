@@ -11,6 +11,7 @@ namespace Example
     {
         static void Main(string[] args)
         {
+            //Create a new ArkonSharp Client with <address> <port> and <rconPassword>
             var rcon = new ArkonSharpClient("12.34.567.89", 32330, "adminpass");
             
             //ArkShop Example: <steamId> <points>
