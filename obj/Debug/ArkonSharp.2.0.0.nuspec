@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>ArkonSharp</id>
+    <version>2.0.0</version>
+    <authors>Bloom</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <description>Rcon Library to work with Ark Survival Evolved commands</description>
+    <dependencies>
+      <group targetFramework=".NETCoreApp3.1">
+        <dependency id="RconSharp" version="2.0.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="N:\Projects\Software\Libraries\ArkonSharp\ArkonSharp\bin\Debug\netcoreapp3.1\ArkonSharp.dll" target="lib\netcoreapp3.1\ArkonSharp.dll" />
+  </files>
+</package>

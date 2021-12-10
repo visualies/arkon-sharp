@@ -1,0 +1,16 @@
+N:\Projects\Software\Libraries\ArkonSharp\ArkonSharp\bin\Debug\netcoreapp3.1\ArkonSharp.deps.json
+N:\Projects\Software\Libraries\ArkonSharp\ArkonSharp\bin\Debug\netcoreapp3.1\ArkonSharp.dll
+N:\Projects\Software\Libraries\ArkonSharp\ArkonSharp\bin\Debug\netcoreapp3.1\ArkonSharp.pdb
+N:\Projects\Software\Libraries\ArkonSharp\ArkonSharp\obj\Debug\netcoreapp3.1\ArkonSharp.csproj.AssemblyReference.cache
+N:\Projects\Software\Libraries\ArkonSharp\ArkonSharp\obj\Debug\netcoreapp3.1\ArkonSharp.AssemblyInfoInputs.cache
+N:\Projects\Software\Libraries\ArkonSharp\ArkonSharp\obj\Debug\netcoreapp3.1\ArkonSharp.AssemblyInfo.cs
+N:\Projects\Software\Libraries\ArkonSharp\ArkonSharp\obj\Debug\netcoreapp3.1\ArkonSharp.csproj.CoreCompileInputs.cache
+N:\Projects\Software\Libraries\ArkonSharp\ArkonSharp\obj\Debug\netcoreapp3.1\ArkonSharp.dll
+N:\Projects\Software\Libraries\ArkonSharp\ArkonSharp\obj\Debug\netcoreapp3.1\ArkonSharp.pdb
+L:\Projects\Software\Libraries\ArkonSharp\ArkonSharp\obj\Debug\netcoreapp3.1\ArkonSharp.csproj.AssemblyReference.cache
+L:\Projects\Software\Libraries\ArkonSharp\ArkonSharp\obj\Debug\netcoreapp3.1\ArkonSharp.GeneratedMSBuildEditorConfig.editorconfig
+L:\Projects\Software\Libraries\ArkonSharp\ArkonSharp\obj\Debug\netcoreapp3.1\ArkonSharp.AssemblyInfoInputs.cache
+L:\Projects\Software\Libraries\ArkonSharp\ArkonSharp\obj\Debug\netcoreapp3.1\ArkonSharp.AssemblyInfo.cs
+L:\Projects\Software\Libraries\ArkonSharp\ArkonSharp\obj\Debug\netcoreapp3.1\ArkonSharp.csproj.CoreCompileInputs.cache
+L:\Projects\Software\Libraries\ArkonSharp\ArkonSharp\obj\Debug\netcoreapp3.1\ArkonSharp.dll
+L:\Projects\Software\Libraries\ArkonSharp\ArkonSharp\obj\Debug\netcoreapp3.1\ArkonSharp.pdb
