@@ -5,21 +5,24 @@
         <Description>Rcon Library to work with Ark Survival Evolved commands</Description>
         <Authors>Bloom</Authors>
         <Company></Company>
-        <Product/>
+        <Product />
         <Copyright></Copyright>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Version>3.0.0</Version>
-        <PackageProjectUrl>https://github.com/visualies/ArkonSharp</PackageProjectUrl>
+        <PackageProjectUrl></PackageProjectUrl>
         <RepositoryUrl>https://github.com/visualies/ArkonSharp</RepositoryUrl>
         <RepositoryType>github</RepositoryType>
+        <PackageVersion>3.0.1</PackageVersion>
+        <Title>ArkonSharp</Title>
+        <PackageTags></PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Entities\"/>
+        <Folder Include="Entities\" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="RconSharp" Version="2.0.1"/>
+        <PackageReference Include="RconSharp" Version="2.0.1" />
     </ItemGroup>
 
 </Project>
