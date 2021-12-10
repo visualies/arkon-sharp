@@ -33,13 +33,13 @@ Implements [RconSharp](https://github.com/stefanodriussi/rconsharp)
 
 Supported Plugins:
 
-[AdvancedDinoColor](https://arkserverapi.com/index.php?resources/advanced-dino-color.152/) [Implemented]
+[AdvancedDinoColor](https://arkserverapi.com/index.php?resources/advanced-dino-color.152/) [Fully Supported]
 
-[ArkShop](https://arkserverapi.com/index.php?resources/shop-currency-kits.14/) [Implemented]
+[ArkShop](https://arkserverapi.com/index.php?resources/shop-currency-kits.14/) [Fully Supported]
 
-[ExtendedRcon](https://arkserverapi.com/index.php?resources/extended-rcon.5/) [Partially Implemented]
+[ExtendedRcon](https://arkserverapi.com/index.php?resources/extended-rcon.5/) [Partially Supported]
 
-[WoolyLootbox]() [Implemented]
+[WoolyLootbox]() [Fully Supported]
 
 #### Nuget Package .NET CLI
 
