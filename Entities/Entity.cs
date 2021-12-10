@@ -1,12 +1,6 @@
-﻿using ArkonSharp.Clients;
-
-namespace ArkonSharp.Entities
+﻿namespace ArkonSharp.Entities
 {
     public abstract class Entity
     {
-        public Entity()
-        {
-            
-        }
     }
 }

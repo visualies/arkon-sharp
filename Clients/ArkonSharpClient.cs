@@ -2,11 +2,11 @@
 {
     public class ArkonSharpClient
     {
+        public readonly ArkShopClient ArkShop;
         public readonly ExtendedRconClient ExtendedRcon;
         public readonly VanillaRconClient VanillaRcon;
         public readonly WoolyLootboxRconClient WoolyLootboxRcon;
-        public readonly ArkShopClient ArkShop;
-        
+
         public ArkonSharpClient(string address, int port, string password)
         {
             ArkShop = new ArkShopClient(address, port, password);

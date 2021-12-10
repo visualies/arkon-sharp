@@ -1,9 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using ArkonSharp.Clients;
-using ArkonSharp.Enums;
-
-namespace ArkonSharp.Entities
+﻿namespace ArkonSharp.Entities
 {
     public class ExtendedRconPlayer : Entity
     {
@@ -11,7 +6,7 @@ namespace ArkonSharp.Entities
 
         public ExtendedRconPlayer(long steamId)
         {
-            this.SteamId = steamId;
+            SteamId = steamId;
         }
     }
 }

@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkonSharp", "ArkonSharp.csproj", "{A90DE873-D89F-41C8-84B9-7C5BE311526A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "..\Demo\Demo.csproj", "{C3FA58A8-9890-4794-B4B9-92C5EDCD142C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{A90DE873-D89F-41C8-84B9-7C5BE311526A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A90DE873-D89F-41C8-84B9-7C5BE311526A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A90DE873-D89F-41C8-84B9-7C5BE311526A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C3FA58A8-9890-4794-B4B9-92C5EDCD142C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C3FA58A8-9890-4794-B4B9-92C5EDCD142C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C3FA58A8-9890-4794-B4B9-92C5EDCD142C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C3FA58A8-9890-4794-B4B9-92C5EDCD142C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

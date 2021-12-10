@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using ArkonSharp.Entities;
 
 namespace ArkonSharp.Clients
 {
@@ -7,9 +6,8 @@ namespace ArkonSharp.Clients
     {
         public ArkShopClient(string address, int port, string password) : base(address, port, password)
         {
-            
         }
-        
+
         public async Task<string> AddPointsAsync(long steamId, int amount)
         {
             var command = $"AddPoints {steamId} {amount}";

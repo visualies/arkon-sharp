@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
@@ -13,12 +12,13 @@ namespace ArkonSharp.Clients
     {
         public ExtendedRconClient(string address, int port, string password) : base(address, port, password)
         {
-            
         }
-        
-        public async Task<string> AddExperienceAsync(long steamId, int amount, bool tribeShare, bool preventSharingWithTribe)
+
+        public async Task<string> AddExperienceAsync(long steamId, int amount, bool tribeShare,
+            bool preventSharingWithTribe)
         {
-            var command = $"AddExperience {steamId} {amount} {Convert.ToInt32(tribeShare)} {Convert.ToInt32(preventSharingWithTribe)}";
+            var command =
+                $"AddExperience {steamId} {amount} {Convert.ToInt32(tribeShare)} {Convert.ToInt32(preventSharingWithTribe)}";
             return await ExecuteCommandAsync(command);
         }
 
@@ -33,12 +33,14 @@ namespace ArkonSharp.Clients
             var command = $"ClientChat '{message}' {author}";
             return await ExecuteCommandAsync(command);
         }
-        public async Task<string> GiveItemAsync(long steamId, string blueprintPath, int amount, int quality, bool foreBlueprint = false)
+
+        public async Task<string> GiveItemAsync(long steamId, string blueprintPath, int amount, int quality,
+            bool foreBlueprint = false)
         {
             var command = $"GiveItem {steamId} {blueprintPath} {amount} {quality} {Convert.ToInt32(foreBlueprint)}";
             return await ExecuteCommandAsync(command);
         }
-        
+
         public async Task<string> SendServerMessageToTribeAsync(long tribeId, string message)
         {
             var command = $"TribeChatMsg {1} {tribeId} {message}";
@@ -56,26 +58,24 @@ namespace ArkonSharp.Clients
             var command = $"TribeChatMsg {3} {tribeId} {message}";
             return await ExecuteCommandAsync(command);
         }
-        
+
         public async Task<long> GetTribeIdOfPlayerAsync(long steamId)
         {
             var command = $"GetTribeIdOfPlayer {steamId}";
             var response = await ExecuteCommandAsync(command);
 
-            if (response.Contains("Not enough arguments"))
-            {
-                throw new Exception("Player is no longer online");
-            }
+            if (response.Contains("Not enough arguments")) throw new Exception("Player is no longer online");
 
             var enumerable = response.Reverse().Skip(1).TakeWhile(char.IsDigit).Reverse();
             var tribeId = Convert.ToInt64(string.Concat(enumerable));
 
             return tribeId;
         }
+
         public async Task<IEnumerable<ExtendedRconPlayerOnline>> GetOnlinePlayersAsync()
         {
             var playerList = new List<ExtendedRconPlayerOnline>();
-            var command = $"ListAllPlayerSteamID";
+            var command = "ListAllPlayerSteamID";
             var response = await ExecuteCommandAsync(command);
 
             switch (response)
@@ -87,12 +87,13 @@ namespace ArkonSharp.Clients
             }
 
             var lines = response.Split('\n');
-            foreach (string line in lines)
+            foreach (var line in lines)
             {
                 if (line.Length < 3) continue;
 
                 var steamId = string.Concat(line.Reverse().TakeWhile(char.IsDigit).Reverse());
-                var tribename = string.Concat(line.Reverse().SkipWhile(a => a != ']').TakeWhile(a => a != '[').Skip(1).Reverse());
+                var tribename = string.Concat(line.Reverse().SkipWhile(a => a != ']').TakeWhile(a => a != '[').Skip(1)
+                    .Reverse());
                 var playername = string.Concat(line.Reverse().SkipWhile(a => a != '[').Skip(2).Reverse());
 
                 var player = new ExtendedRconPlayerOnline(Convert.ToInt64(steamId), playername, tribename);
@@ -107,24 +108,24 @@ namespace ArkonSharp.Clients
         {
             var positionList = new List<ExtendedRconPlayerPosition>();
 
-            var command = $"ListAllPlayerSteamID";
+            var command = "ListAllPlayerSteamID";
             var response = await ExecuteCommandAsync(command);
-            
+
             if (response == "\n") return positionList;
             if (response == "Command returned no data\n") return positionList;
 
             var lines = response.Split('\n');
-            foreach (string line in lines)
+            foreach (var line in lines)
             {
                 if (line.Length < 3) continue;
 
                 const string bracket = ")";
-                int bracketCount = (line.Length - line.Replace(bracket, "").Length) / bracket.Length;
+                var bracketCount = (line.Length - line.Replace(bracket, "").Length) / bracket.Length;
 
                 //hpyhen comparison needs an extra string since coords can contain hyphen
                 var hypenString = string.Concat(line.Reverse().SkipWhile(a => a != 'X').Reverse());
                 var hyphen = "-";
-                int hyphenCount = (line.Length - line.Replace(hyphen, "").Length) / hyphen.Length;
+                var hyphenCount = (line.Length - line.Replace(hyphen, "").Length) / hyphen.Length;
 
                 string playername;
                 string tribename;
@@ -150,18 +151,22 @@ namespace ArkonSharp.Clients
                 //continue if player is "" (player is dead)
                 if (string.IsNullOrWhiteSpace(playername)) continue;
 
-                var z = float.Parse(string.Concat(line.Reverse().TakeWhile(a => a != '=').Reverse()), CultureInfo.InvariantCulture);
-                var y = float.Parse(string.Concat(line.Reverse().SkipWhile(a => a != 'Z').Skip(1).TakeWhile(a => a != '=').Reverse()), CultureInfo.InvariantCulture);
-                var x = float.Parse(string.Concat(line.Reverse().SkipWhile(a => a != 'Y').Skip(1).TakeWhile(a => a != '=').Reverse()), CultureInfo.InvariantCulture);
+                var z = float.Parse(string.Concat(line.Reverse().TakeWhile(a => a != '=').Reverse()),
+                    CultureInfo.InvariantCulture);
+                var y = float.Parse(
+                    string.Concat(line.Reverse().SkipWhile(a => a != 'Z').Skip(1).TakeWhile(a => a != '=').Reverse()),
+                    CultureInfo.InvariantCulture);
+                var x = float.Parse(
+                    string.Concat(line.Reverse().SkipWhile(a => a != 'Y').Skip(1).TakeWhile(a => a != '=').Reverse()),
+                    CultureInfo.InvariantCulture);
 
                 var coords = new Vector3(x, y, z);
                 var position = new ExtendedRconPlayerPosition(coords, playername, tribename);
 
                 positionList.Add(position);
             }
-            
+
             return positionList;
         }
-
     }
 }
