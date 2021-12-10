@@ -92,10 +92,9 @@ namespace ArkonSharp.Clients
                 if (line.Length < 3) continue;
 
                 var steamId = string.Concat(line.Reverse().TakeWhile(char.IsDigit).Reverse());
-                var tribename = string.Concat(line.Reverse().SkipWhile(a => a != ']').TakeWhile(a => a != '[').Skip(1)
-                    .Reverse());
+                var tribename = string.Concat(line.Reverse().SkipWhile(a => a != ']').TakeWhile(a => a != '[').Skip(1).Reverse());
                 var playername = string.Concat(line.Reverse().SkipWhile(a => a != '[').Skip(2).Reverse());
-
+                
                 var player = new ExtendedRconPlayerOnline(Convert.ToInt64(steamId), playername, tribename);
 
                 playerList.Add(player);
