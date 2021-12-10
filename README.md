@@ -32,6 +32,7 @@ namespace Example
 Implements [RconSharp](https://github.com/stefanodriussi/rconsharp)
 
 Supported Plugins:
+
 [AdvancedDinoColor](https://arkserverapi.com/index.php?resources/advanced-dino-color.152/)
 
 [ArkShop](https://arkserverapi.com/index.php?resources/shop-currency-kits.14/)
