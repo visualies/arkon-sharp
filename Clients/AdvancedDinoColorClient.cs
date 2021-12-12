@@ -19,5 +19,7 @@ namespace ArkonSharp.Clients
             var command = "adc.reload";
             return await ExecuteCommandAsync(command);
         }
+
+
     }
 }

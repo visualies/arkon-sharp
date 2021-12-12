@@ -4,9 +4,9 @@ namespace ArkonSharp.Entities
 {
     public class ExtendedRconPlayerPosition : Entity
     {
-        public readonly string PlayerName;
-        public readonly Vector3 Position;
-        public readonly string TribeName;
+        public string PlayerName { get; }
+        public Vector3 Position { get; }
+        public string TribeName { get; }
 
         public ExtendedRconPlayerPosition(Vector3 position, string playerName, string tribeName)
         {

@@ -1,4 +1,6 @@
-﻿namespace ArkonSharp.Clients
+﻿using ArkonSharp.Clients;
+
+namespace ArkonSharp
 {
     public class ArkonSharpClient
     {

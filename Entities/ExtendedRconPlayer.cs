@@ -1,12 +1,11 @@
-﻿namespace ArkonSharp.Entities
-{
-    public class ExtendedRconPlayer : Entity
-    {
-        public readonly long SteamId;
+﻿using ArkonSharp.Clients;
 
-        public ExtendedRconPlayer(long steamId)
+namespace ArkonSharp.Entities
+{
+    internal class ExtendedRconPlayer : Player
+    {
+        public ExtendedRconPlayer(long steamId) : base(steamId)
         {
-            SteamId = steamId;
         }
     }
 }

@@ -1,16 +1,18 @@
-﻿namespace ArkonSharp.Entities
-{
-    public class ExtendedRconPlayerOnline : Entity
-    {
-        public readonly string PlayerName;
-        public readonly long SteamId;
-        public readonly string TribeName;
+﻿using System.Threading.Tasks;
+using ArkonSharp.Clients;
 
-        public ExtendedRconPlayerOnline(long steamId, string playerName, string tribeName)
+namespace ArkonSharp.Entities
+{
+    internal class ExtendedRconPlayerOnline : Player
+    {
+        public string PlayerName { get; }
+        public string TribeName { get; }
+
+        public ExtendedRconPlayerOnline(long steamId, string playerName, string tribeName) : base(steamId)
         {
-            SteamId = steamId;
             PlayerName = playerName;
             TribeName = tribeName;
         }
+
     }
 }

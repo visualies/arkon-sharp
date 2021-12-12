@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31424.327
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkonSharp", "ArkonSharp.csproj", "{A90DE873-D89F-41C8-84B9-7C5BE311526A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArkonSharp", "ArkonSharp.csproj", "{A90DE873-D89F-41C8-84B9-7C5BE311526A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoApp", "..\DemoApp\DemoApp.csproj", "{8179F175-D6C0-412F-A09E-F0222A37597F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A90DE873-D89F-41C8-84B9-7C5BE311526A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A90DE873-D89F-41C8-84B9-7C5BE311526A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A90DE873-D89F-41C8-84B9-7C5BE311526A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8179F175-D6C0-412F-A09E-F0222A37597F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8179F175-D6C0-412F-A09E-F0222A37597F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8179F175-D6C0-412F-A09E-F0222A37597F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8179F175-D6C0-412F-A09E-F0222A37597F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
