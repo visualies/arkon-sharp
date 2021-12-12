@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ArkonSharp.Entities
 {
-    internal class Player : Entity
+    public class Player : Entity
     {
         public long SteamId { get; }
 

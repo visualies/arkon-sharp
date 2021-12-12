@@ -2,7 +2,7 @@
 
 namespace ArkonSharp.Entities
 {
-    internal class ExtendedRconPlayer : Player
+    public class ExtendedRconPlayer : Player
     {
         public ExtendedRconPlayer(long steamId) : base(steamId)
         {

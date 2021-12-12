@@ -3,7 +3,7 @@ using ArkonSharp.Clients;
 
 namespace ArkonSharp.Entities
 {
-    internal class ExtendedRconPlayerOnline : Player
+    public class ExtendedRconPlayerOnline : Player
     {
         public string PlayerName { get; }
         public string TribeName { get; }
