@@ -6,15 +6,12 @@
         <Authors>Bloom</Authors>
         <Company></Company>
         <Product />
-        <Copyright></Copyright>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Version>3.0.2</Version>
-        <PackageProjectUrl></PackageProjectUrl>
         <RepositoryUrl>https://github.com/visualies/ArkonSharp</RepositoryUrl>
         <RepositoryType>github</RepositoryType>
-        <PackageVersion>3.0.2</PackageVersion>
+        <PackageVersion>3.0.3</PackageVersion>
         <Title>ArkonSharp</Title>
-        <PackageTags></PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
