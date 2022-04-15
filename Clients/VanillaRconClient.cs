@@ -8,6 +8,12 @@ namespace ArkonSharp.Clients
         {
         }
 
+        public async Task<string> SendCustomCommandAsync(string input)
+        {
+            var command = $"{input}";
+            return await ExecuteCommandAsync(command);
+        }
+
         public async Task<string> SendServerMessageToPlayerAsync(long steamId, string message)
         {
             var command = $"ServerChatTo \"{steamId}\" {message}";

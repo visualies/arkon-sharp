@@ -1,4 +1,5 @@
-﻿using ArkonSharp.Clients;
+﻿using System.Threading.Tasks;
+using ArkonSharp.Clients;
 
 namespace ArkonSharp
 {
