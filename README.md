@@ -35,5 +35,5 @@ Implements [RconSharp](https://github.com/stefanodriussi/rconsharp)
 #### Nuget Package .NET CLI
 
 ```cli
-dotnet add package ArkonSharp --version 3.0.0
+dotnet add package ArkonSharp --version 3.0.2
 ```
